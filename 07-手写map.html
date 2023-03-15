@@ -1,0 +1,16 @@
+<script>
+    Array.prototype._map = function _map(fn){
+        let newarr = []
+        for (let i = 0; i < this.length; i++) {
+            newarr[i]=fn(this[i])
+        }
+        return newarr
+    }
+    
+    let arr = [10,20]
+    
+    let newArr = arr._map((item)=>{
+        return item*item
+    })
+    console.log(newArr);
+</script>

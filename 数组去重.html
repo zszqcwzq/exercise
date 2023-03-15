@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let arr = [6, 2, 3, 2, 4, 3, 6,]
+
+    //对象存在检测法
+    function reset(arr) {
+        let newarr = []
+        let obj = {}
+        for (let i = 0; i < arr.length; i++) {
+            if (!obj[arr[i]]) {
+                newarr.push(arr[i])
+                obj[arr[i]] = true
+            }
+        }
+        return newarr
+    }
+
+    console.log(reset(arr));
+
+console.log('---------------------------------');
+
+    //set去重法
+    console.log(Array.from(new Set(arr)));
+    console.log([...(new Set(arr))]);
+
+console.log('---------------------------------');
+
+    //indexof
+    let newarr = []
+    arr.forEach(function (item) {
+        if (newarr.indexOf(item) == -1) {
+            newarr.push(item)
+        }
+    })
+    console.log(arr);
+    console.log(newarr);
+</script>
+
+
+</html>

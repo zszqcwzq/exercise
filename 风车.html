@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旋转小风车</title>
+  
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            /* animation: rotate 4s linear infinite; */
+        }
+        .center{
+            position: absolute;
+            top:140px;
+            left:140px;
+            width:20px;
+            height:20px;
+            background-color: rgb(61, 13, 235);
+        }
+        .box .ban {
+            display: flex;
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+        }
+        
+        .box .ban:nth-child(1) span {
+            width: 150px;
+            height: 150px;
+            margin-top: 75px;
+            border-radius: 50% 50% 0 0;
+            /* background-color: red; */
+            background: -webkit-linear-gradient( left top, rgb(68, 37, 141), #fff);
+        }
+        
+        .box .ban:nth-child(2) span {
+            width: 150px;
+            height: 150px;
+            margin-left: -75px;
+            border-radius: 0 50% 50% 0;
+            background: -webkit-linear-gradient( left top, rgb(5, 31, 162), #fff);
+        }
+        
+        .box .ban:nth-child(3) span {
+            width: 150px;
+            height: 150px;
+            margin-left: -75px;
+            border-radius: 0 50% 50% 0;
+            background: -webkit-linear-gradient( left top, rgb(201, 93, 240), #fff);
+        }
+        
+        .box .ban:nth-child(3) {
+            transform: rotate(180deg);
+        }
+        
+        .box .ban:nth-child(4) span {
+            width: 150px;
+            height: 150px;
+            margin-top: -75px;
+            border-radius: 0 0 50% 50%;
+            background: -webkit-linear-gradient( right top, rgb(177, 18, 108), #fff);
+        }
+        
+        @keyframes rotate {
+            0% {}
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+
+    </style>
+</head>
+
+ <!--
+        步骤：
+            1.先设置一个盒子box；
+            2.里面再装4个小盒子
+            3.最里面再装4个span来制作风车的半圆，
+                使用border-radio属性来设置圆角，margin来设置半圆的位置
+            4.最后在中间添加一个正方形的固定器
+    -->
+<body>
+    <div class="box">
+        <div class="ban">
+            <span></span>
+        </div>
+        <div class="ban">
+            <span></span>
+        </div>
+        <div class="ban">
+            <span></span>
+        </div>
+        <div class="ban">
+            <span></span>
+        </div>
+        <div class="center"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        const _quickSort = array => {
+            // 补全代码
+            if (array.length <= 1) {
+                return array
+            }
+            let le = []
+            let ri = []
+            let midindex = Math.floor(array.length / 2)
+            let mid = array.splice(midindex, 1)[0]
+            for (let i = 0; i < array.length; i++) {
+                array[i] < mid ? le.push(array[i]) : ri.push(array[i])
+            }
+            return [..._quickSort(le), ...[mid], ..._quickSort(ri)]
+
+            //    return _quickSort(le).concat([mid], _quickSort(ri))
+        }
+
+        console.log(_quickSort([1, 3, 2, 6, 5, 9, 4,]));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+<script>
+    //找到满足条件的并返回该值
+    Array.prototype._find = function(fn){
+        for (let i = 0; i < this.length; i++) {
+            if (fn(this[i])) {
+                return this[i]
+            }
+        }
+    }
+    let arr = [1,2,3,4,5,6,7]
+
+    let newArr = arr._find(function(item){
+        return item > 3.5
+    })
+    console.log(newArr);
+</script>

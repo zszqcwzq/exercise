@@ -1,0 +1,17 @@
+<script>
+    //找到满足的并全部返回成新数组
+    Array.prototype._filter = function(fn){
+        let res = []
+        for (let i = 0; i < this.length; i++) {
+            if (fn(this[i])) {
+                res[res.length]=this[i]
+            }
+        }
+        return res
+    }
+    let arr = [9,1,2,3,4,5,6,7]
+    let newArr = arr._filter(function(item){
+        return item > 3
+    })
+    console.log(newArr);
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function sumFinder(arr, sum) {
+        var differ = {},
+            len = arr.length,
+            substract;
+
+        for (var i = 0; i < len; i++) {
+            substract = sum - arr[i];
+
+            if (differ[substract])
+                return true;
+            else
+                differ[arr[i]] = true;
+        }
+
+        return false;
+    }
+</script>
+
+</html>

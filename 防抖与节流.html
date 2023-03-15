@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" />
+    </div>
+    <style>
+        body {
+            height: 2000px;
+        }
+    </style>
+</body>
+<script>
+    //防抖 对定时器做判断 如果为空直接加定时器 不为空说明之前有 清除掉再加定时器 只执行最后一次
+    //调用api
+    let inp = document.querySelector("input")
+    let t = null
+    inp.addEventListener('input', debounce(function () {
+        console.log(this.value)
+    }, 500))
+    //防抖函数封装
+    function debounce(fn, delay) {
+        return function () {
+            if (t !== null) {
+                clearTimeout(t)
+            }
+            t = setTimeout(() => {
+                fn.call(this)
+            }, delay)
+        }
+    }
+    //节流 对flag的是非做判断 如果为是 证明现在的状态可以加 那么加异步定时器 同步任务外面设置为false 定时器的最后再设true 
+    //子弹射击 逻辑为 当前状态为true那么证明准备就绪 可以打下一发子弹 为 每开一枪 开枪中间设置为false 不能开下一枪 第一枪结束了最后设置true
+    let t2 = true
+    window.addEventListener('scroll', jl(function () {
+        console.log('滚动ing');
+    }))
+
+    function jl(fn) {
+        return function () {
+            if (t2) {
+                setTimeout(() => {
+                    fn()
+                    t2 = true
+                }, 160)
+            }
+            t2 = false
+        }
+    }
+
+</script>
+
+</html>

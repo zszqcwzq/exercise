@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /* const _createArray = (number) => {
+        // 补全代码
+        if (!isNaN(number) && number > 0) {
+             return Array(number).fill(number)
+        }
+    }
+    console.log(_createArray(1)); */
+
+    /* const _getUniqueNums = (start, end, n) => {
+        // 补全代码
+        let arr = []
+        while (arr.length < n) {
+            let item = Math.floor(Math.random() * (end - 1) + start)
+            if (arr.indexOf(item) == -1) {
+                arr.push(item)
+            }
+        }
+        return arr
+    }
+    console.log(_getUniqueNums(2, 6, 7)); */
+
+
+    /* const _delete = (array, index) => {
+        // 补全代码
+        return array.filter((item, idx) => index != idx)
+    } */
+    /* const _isFibonacci = array => {
+        // 补全代码
+        if (array.length < 3 || array[0] != 0 || array[1] != 1 || array[2] != 1) {
+            return false
+        } else {
+            for (let index = 0; index < array.length; index++) {
+                if (array[index] != array[index - 1] + array[index - 2]) {
+                    return false
+                }
+
+            }
+        }
+        return true
+        
+    } */
+    /* let res = []
+    
+    const _flatten = arr => {
+                // 补全代码
+                arr.forEach(ele => {
+                    
+                    if (Array.isArray(ele)) {
+                        _flatten(ele)
+                    }else{
+                        res.push(ele)
+                    }
+                });
+                return res
+
+            }
+             */
+    Array.prototype.uniq = function () {
+        var arr = [];
+        var flag = true;
+        this.forEach(function (item) {
+            if (item != item) {
+                //这是为了排除NaN的情况
+                flag && arr.indexOf(item) == -1 ? arr.push(item) : '';
+                flag = false;
+            } else {
+                arr.indexOf(item) == -1 ? arr.push(item) : '';
+            }
+
+        });
+        return arr;
+
+    }
+    let a =new Array
+    a =[false, true, undefined, null, NaN, 0, 1, {}, {}, 'a', 'a', NaN]
+    console.log(a.uniq());
+   
+ 
+</script>
+
+
+</html>
