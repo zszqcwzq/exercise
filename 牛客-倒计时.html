@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="jsCountdown">
+        <span>01天</span>
+        <span>02:</span>
+        <span>03:</span>
+        <span>04</span>
+    </div>
+</body>
+
+</html>
+<script>
+    function second(second) {
+
+        let s = second % 60
+        let m = Math.floor(second / 60) % 60
+        let h = Math.floor(second / 60 / 60) % 24
+        let d = Math.floor(second / 60 / 60 / 24)
+
+        return { day: d, hour: h, min: m, second: s }
+    }
+
+    // console.log(second(123259));
+
+    function render(data) {
+
+        for (const key in data) {
+
+            
+
+            data[key] = data[key] > 9 ? data[key] : '0' + data[key]
+           
+        }
+        let jsCountdown = document.getElementById('jsCountdown')
+        jsCountdown.children[0].innerHTML = data.day + '天'
+        jsCountdown.children[1].innerHTML = data.hour + ':'
+        jsCountdown.children[2].innerHTML = data.min + ':'
+        jsCountdown.children[3].innerHTML = data.second
+        if (data.day == '00') {
+            jsCountdown.children[0].className = 'hide'
+        }
+    }
+    render(second(59))
+</script>
+
+<style>
+    .hide {
+        display: none;
+    }
+</style>

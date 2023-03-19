@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    const _shouldUpdate = (oldVersion, newVersion) => {
+        // 补全代码
+        let newarr = newVersion.split('.')
+        let oldarr = oldVersion.split('.')
+        let flag = false
+
+        for (let i = 0; i < newarr.length; i++) {
+            if (newarr[i] > oldarr[i]) {
+                flag = true
+            }
+        }
+        return flag
+    }
+    console.log(_shouldUpdate('2.0.1', '2.1.0'));
+</script>

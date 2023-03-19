@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="test">
+        <div class="blue">1</div>
+    </div>
+
+    <button>1</button>
+</body>
+
+</html>
+
+<script>
+    const btn = document.querySelector('button')
+    const test = document.querySelector('.test')
+    const blue = test.querySelector('.blue')
+
+    btn.addEventListener('click', () => {
+        const red = blue.cloneNode()
+        red.className = 'red'
+        red.innerHTML = '新鲜滴节点'
+        test.insertBefore(red, blue)
+        
+    })
+</script>
+<style>
+    .test {
+        width: 400px;
+        height: 200px;
+        border: 1px solid;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .test div {
+        width: 100%;
+        height: 80px;
+        margin-bottom: 2px;
+    }
+
+    .blue {
+        background-color: blue;
+    }
+
+    .red {
+        background-color: red;
+    }
+</style>

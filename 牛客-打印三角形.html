@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div class='triangle'></div>
+
+    <script>
+        var triangle = document.querySelector('.triangle');
+        // 补全代码
+        for (let i = 1; i <= 3; i++) {
+            let text = ''
+            n = i
+            while (n > 0) {
+                text += '*'
+                n--
+            }
+            triangle.innerHTML += text + "<br/>"
+
+        }
+
+
+        const _getExFilename = (filename) => {
+            let index = filename.lastIndexOf('.')
+            let hzm = filename.slice(index + 1, filename.length)
+            return hzm
+        }
+        console.log(typeof _getExFilename('1234.txt'));
+    </script>
+</body>
+
+</html>

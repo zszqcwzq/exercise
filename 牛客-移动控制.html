@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="jsContainer">
+        <table class="game">
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="blue"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="red"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function bind() {
+
+        document.onkeydown = event => {
+            if (!event) return;
+            var code = event.keyCode || '';
+            if (!{ '37': 1, '38': 1, '39': 1, '40': 1, '65': 1, '87': 1, '68': 1, '83': 1 }[code]) return;
+            event.preventDefault && event.preventDefault();
+            console.log(code);
+            //TODO: 请实现按键控制
+            const jsContainer = document.getElementById("jsContainer")
+            const tb = jsContainer.children[0].children[0]
+            const tr = tb.querySelectorAll('tr')
+            let x = 8
+            let y = 8
+
+            let m = 0
+            let n = 0
+           
+            for (let i = 0; i < tr.length; i++) {
+                const td = tr[i].querySelectorAll('td')
+                for (let j = 0; j < td.length; j++) {
+                    if (td[j].className == 'blue') {
+                        x = j
+                        y = i
+                    }
+                    if (td[j].className == 'red') {
+                        m = j
+                        n = i
+                    }
+                }
+            }
+            switch (code) {
+                case 37:
+                    tr[y].children[x].className = ''
+                    x = x - 1 < 0 ? tr[0].children.length - 1 : x - 1
+                    tr[y].children[x].className = 'blue';
+
+                    break;
+                case 38:
+
+                    tr[y].children[x].className = ''
+                    y = y - 1 < 0 ? tr.length - 1 : y - 1
+                    tr[y].children[x].className = 'blue';
+                    break;
+                case 39:
+                    tr[y].children[x].className = ''
+                    x = x + 1 > tr[0].children.length - 1 ? 0 : x + 1
+                    tr[y].children[x].className = 'blue';
+                    break;
+                case 40:
+                    tr[y].children[x].className = ''
+                    y = y + 1 > tr.length - 1 ? 0 : y + 1
+                    tr[y].children[x].className = 'blue';
+                    break;
+
+                //w87 a65 s83 d68
+
+                case 65:
+                    tr[n].children[m].className = ''
+                    m = m - 1 < 0 ? tr[0].children.length - 1 : m - 1
+                    tr[n].children[m].className = 'red';
+
+                    break;
+                case 87:
+
+                    tr[n].children[m].className = ''
+                    n = n - 1 < 0 ? tr.length - 1 : n - 1
+                    tr[n].children[m].className = 'red';
+                    break;
+                case 68:
+                    tr[n].children[m].className = ''
+                    m = m + 1 > tr[0].children.length - 1 ? 0 : m + 1
+                    tr[n].children[m].className = 'red';
+                    break;
+                case 83:
+                    tr[n].children[m].className = ''
+                    n = n + 1 > tr.length - 1 ? 0 : n + 1
+                    tr[n].children[m].className = 'red';
+                    break;
+            }
+            if (m + 1 >= x && x >= m - 1 && n + 1 >= y && y >= n - 1) {
+                console.log(event);
+            }
+        }
+    }
+
+    bind()
+
+    // (function () {
+    //     var el = document.getElementById('jsContainer');
+    //     prepare(el, 10, 10);
+    //     var table = el.querySelector('.game');
+    //     var tds = [].slice.call(table.getElementsByTagName('td'), 0);
+    //     document.onkeydown = null;
+    //     bind();
+    //     tds[0].classList.add('blue');
+    //     document.onkeydown({ keyCode: 37 });
+    //     var result = tds.every((item, index) => !!(index === 9) === !!(item.classList.contains('blue')));
+    //     console.log(result); return result;
+    //     function prepare(el, m, n) {
+    //         var html = new Array(m + 1).join(`<tr>${new Array(n + 1).join('<td></td>')}</tr>`);
+    //         el.innerHTML = `<table class="game">${html}</table>`;
+    //     }
+    // })()
+
+
+</script>
+<style>
+    table.game {
+        font-size: 14px;
+        border-collapse: collapse;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    table.game td {
+        border: 1px solid #e1e1e1;
+        padding: 0;
+        height: 30px;
+        text-align: center;
+    }
+
+    table.game td.blue {
+        background: #1890ff;
+    }
+
+    table.game td.red {
+        background: red;
+    }
+</style>

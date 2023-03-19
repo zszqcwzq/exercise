@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    let a = 3
+    let b = 6
+    let num = 0
+
+    for (let i = 1; i <= b; i++) {
+        let n = 1
+        let i_ = i
+        while (i_ > 1) {
+            n = 1 + n * 10
+            i_--
+        }
+        console.log(a * n);
+        num += a * n
+    }
+
+    console.log(num);
+</script>
